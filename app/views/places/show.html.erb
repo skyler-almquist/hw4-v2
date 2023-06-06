@@ -1,12 +1,27 @@
 <h1><%= @place["name"] %></h1>
 
 <h2>My Posts</h2>
+
+
 <% for post in @posts %>
- <% user = User.find_by({ "id" => post["user_id"] }) %>
-  <h3><%= post["title"] %></h3>
-  <h4><%= post["posted_on"] %></h4>
-  <p><%= post["description"] %></p>
+  <% user = User.find_by({ "id" => post["user_id"] }) %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3 class="card-title"><%= post["title"] %></h3>
+      <p class="card-text"><%= post["description"] %></p>
+      <% if post["image_url"] %>
+        <img src="<%= post["image_url"] %>" alt="Post Image" class="img-fluid rounded">
+      <% end %>
+    </div>
+    <div class="card-footer text-muted">
+      
+      <span class="post-date-formatted"><%= post["posted_on"].strftime('%B %e, %Y') %></span>
+    </div>
+  </div>
 <% end %>
+
+
+
 
 
 
