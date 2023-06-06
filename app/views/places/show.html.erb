@@ -2,8 +2,9 @@
 
 <h2>My Posts</h2>
 
+<% sorted_posts = @posts.sort_by { |post| post["posted_on"] }.reverse %>
 
-<% for post in @posts %>
+<% for post in sorted_posts %>
   <% user = User.find_by({ "id" => post["user_id"] }) %>
   <div class="card mb-3">
     <div class="card-body">
@@ -19,6 +20,7 @@
     </div>
   </div>
 <% end %>
+
 
 
 
