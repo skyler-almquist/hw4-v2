@@ -1,28 +1,24 @@
 <% if @current_user %>
   <div class="d-flex align-items-center justify-content-between">
-  <h1>Places I Have Digested Tacos</h1>
-  <a class="btn btn-success" href="/places/new">New Place</a>
-</div>
+    <h1>Places I Have Digested Tacos</h1>
+    <a class="btn btn-success" href="/places/new">New Place</a>
+  </div>
 
-<div class="row">
-  <% sorted_places = @places.sort_by { |place| place["name"] } %>
-  <% sorted_places.each do |place| %>
-    <div class="col-md-4">
-      <div class="card mb-3 border-success bg-light">
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="/places/<%= place["id"] %>" class="text-success">
-              <%= place["name"] %>
-            </a>
-          </h4>
-          <p class="card-text"><%= place["description"] %></p>
+  <div class="row">
+    <% sorted_places = @places.select { |place| place["user_id"] == @current_user.id }.sort_by { |place| place["name"] } %>
+    <% sorted_places.each do |place| %>
+      <div class="col-md-4">
+        <div class="card mb-3 border-success bg-light">
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="/places/<%= place["id"] %>" class="text-success">
+                <%= place["name"] %>
+              </a>
+            </h4>
+            <p class="card-text"><%= place["description"] %></p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
-
-
-
-
+    <% end %>
+  </div>
 <% end %>
