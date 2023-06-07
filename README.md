@@ -7,6 +7,7 @@ https://tacoshare.herokuapp.com/
 
 I had trouble each time trying to get past the release phase. I tried deleting my Heroku account and re-uploading. I followed the instruction / videos 4x still with no success. I have uploaded the error message below. 
 
+Hope you like the website - I actually had a ton of fun building this and really got the hang of formating with bootstrap. 
 
 rails aborted!
 ActiveRecord::ConnectionNotEstablished: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: No such file or directory
