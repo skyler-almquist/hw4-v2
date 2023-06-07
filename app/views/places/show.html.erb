@@ -19,12 +19,14 @@
         <div class="card-body">
           <h3 class="card-title"><%= post["title"] %></h3>
           <p class="card-text"><%= post["description"] %></p>
-          <% if post["image_url"] %>
-            <img src="<%= post["image_url"] %>" alt="Post Image" class="img-fluid rounded">
-          <% end %>
+        <% if post.uploaded_image.attached? %>
+  <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+<% else %>
+  <img src="<%= post["image"] %>" class="img-fluid">
+<% end %>
         </div>
         <div class="card-footer text-muted">
-          <span class="post-date-normal"><%= post["posted_on"].to_s %></span>
+        
           <span class="post-date-formatted"><%= post["posted_on"].strftime('%B %e, %Y') %></span>
         </div>
       </div>
